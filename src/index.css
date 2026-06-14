@@ -40,6 +40,84 @@ select {
   min-height: 100vh;
 }
 
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-card);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.auth-card h1 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.auth-mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.btn-auth-mode {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.btn-auth-mode.active {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: var(--primary-color);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.auth-input {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #93c5fd;
+}
+
+.auth-error {
+  color: var(--danger-color);
+  font-size: 0.85rem;
+  margin: 4px 0;
+}
+
 .app-shell {
   display: flex;
   min-height: 100vh;
@@ -70,6 +148,7 @@ select {
 .nav-links {
   list-style: none;
   padding: 24px 16px;
+  flex: 1;
 }
 
 .nav-item {
@@ -96,6 +175,32 @@ select {
 .nav-icon {
   margin-right: 12px;
   font-size: 1.1rem;
+}
+
+.sidebar-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sidebar-user {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-logout {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
 }
 
 .main-content {
@@ -747,6 +852,14 @@ td {
     position: static;
     width: 100%;
     height: auto;
+  }
+
+  .nav-links {
+    flex: initial;
+  }
+
+  .sidebar-footer {
+    justify-content: flex-start;
   }
 
   .app-shell {

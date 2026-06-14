@@ -1,17 +1,20 @@
 import PageHeader from '../components/PageHeader'
+import { useAuth } from '../contexts/useAuth'
 import { cashFlowBars, connectedAccounts, dashboardCards, dashboardInsights } from '../data/mockData'
 import { classNames } from '../lib/classNames'
 
 const DashboardPage = () => {
+  const { username } = useAuth()
+  const displayName = username ?? 'Usuário'
   return (
     <>
       <PageHeader
         title="Visão Geral"
-        subtitle="Bem-vindo de volta, Emanuel!"
+        subtitle={`Bem-vindo de volta, ${displayName}!`}
         rightSlot={
           <div className="user-profile">
             <span>Minha Empresa Ltda</span>
-            <div className="avatar">LM</div>
+            <div className="avatar">{displayName.slice(0, 2).toUpperCase()}</div>
           </div>
         }
       />

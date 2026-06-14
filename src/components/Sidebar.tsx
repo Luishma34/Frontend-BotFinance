@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../contexts/useAuth'
 import { navItems } from '../data/mockData'
 
 const Sidebar = () => {
+  const { username, logout } = useAuth()
+
   return (
     <nav className="sidebar" aria-label="Navegação principal">
       <div className="brand">
@@ -25,6 +28,12 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
+      <div className="sidebar-footer">
+        <p className="sidebar-user">{username}</p>
+        <button type="button" className="btn-logout" onClick={logout}>
+          Sair
+        </button>
+      </div>
     </nav>
   )
 }
