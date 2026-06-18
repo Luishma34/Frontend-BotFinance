@@ -13,13 +13,14 @@ export const authStorage = {
     try {
       const parsedValue = JSON.parse(rawValue) as Partial<AuthSession>
 
-      if (typeof parsedValue.token !== 'string' || typeof parsedValue.username !== 'string') {
+      if (typeof parsedValue.token !== 'string' || typeof parsedValue.username !== 'string' || typeof parsedValue.userId !== 'string') {
         return null
       }
 
       return {
         token: parsedValue.token,
         username: parsedValue.username,
+        userId: parsedValue.userId,
       }
     } catch {
       return null

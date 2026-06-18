@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "pluggy-js": "^0.19.3",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+    "react-pluggy-connect": "^2.12.0",
     "react-router-dom": "^7.17.0"
   },
   "devDependencies": {

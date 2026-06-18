@@ -7,6 +7,8 @@ import DashboardPage from './pages/DashboardPage'
 import FinancePage from './pages/FinancePage'
 import OpenFinancePage from './pages/OpenFinancePage'
 import ReportsPage from './pages/ReportsPage'
+import TransactionsPage from './pages/TransactionsPage'
+import Widget from './pages/Widget'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: 'open-finance',
         element: <OpenFinancePage />,
+      },
+      {
+        path: 'transacoes',
+        element: <TransactionsPage />,
+      },
+      {
+        path: 'widget',
+        element: <Widget />,
       },
       {
         path: '*',

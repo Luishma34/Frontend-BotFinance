@@ -10,7 +10,7 @@ interface AuthProviderProps {
   children: ReactNode
 }
 
-const createSession = (token: string, username: string): AuthSession => ({ token, username })
+const createSession = (token: string, username: string ): AuthSession => ({ token, username })
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [session, setSession] = useState<AuthSession | null>(() => authStorage.getSession())

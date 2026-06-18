@@ -1,4 +1,4 @@
-export type AppRoute = 'dashboard' | 'assistant' | 'finance' | 'reports' | 'open-finance'
+export type AppRoute = 'dashboard' | 'assistant' | 'finance' | 'reports' | 'open-finance' | 'transactions'
 
 export interface NavItem {
   route: AppRoute

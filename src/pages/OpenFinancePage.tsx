@@ -1,15 +1,90 @@
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
-import { bankConnections, syncLogs } from '../data/mockData'
+import { useAuth } from '../contexts/useAuth'
+import { openFinanceService } from '../services/openFinanceService'
+import { syncLogs } from '../data/mockData'
 import { classNames } from '../lib/classNames'
+import type { OpenFinanceResponse, ConnectionStatus } from '../types/openFinance'
 
 const OpenFinancePage = () => {
+  const navigate = useNavigate()
+  const { token } = useAuth()
+  const [bankConnections, setBankConnections] = useState<OpenFinanceResponse[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchConnections = async () => {
+      if (!token) {
+        setIsLoading(false)
+        return
+      }
+
+      try {
+        const response = await openFinanceService.getItems(token)
+        setBankConnections(response)
+      } catch (err) {
+        console.error('Error fetching bank connections:', err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchConnections()
+  }, [token])
+
+  const getStatusLabel = (status: ConnectionStatus): string => {
+    switch (status) {
+      case 'UPDATED':
+        return 'Conectado'
+      case 'LOGIN_ERROR':
+        return 'Erro de Login'
+      case 'UPDATING':
+        return 'Atualizando'
+      case 'OUTDATED':
+        return 'Desatualizado'
+      default:
+        return 'Desconhecido'
+    }
+  }
+
+  const getActionLabel = (status: ConnectionStatus): string => {
+    switch (status) {
+      case 'UPDATED':
+        return 'Desconectar'
+      case 'LOGIN_ERROR':
+        return 'Reconectar'
+      case 'UPDATING':
+        return 'Aguarde'
+      case 'OUTDATED':
+        return 'Atualizar'
+      default:
+        return 'Reconectar'
+    }
+  }
+
+  const getStatusClass = (status: ConnectionStatus): string => {
+    switch (status) {
+      case 'UPDATED':
+        return 'connected'
+      case 'LOGIN_ERROR':
+        return 'error'
+      case 'UPDATING':
+        return 'updating'
+      case 'OUTDATED':
+        return 'outdated'
+      default:
+        return 'unknown'
+    }
+  }
+
   return (
     <>
       <PageHeader
         title="Conexões Bancárias"
         subtitle="Gerencie suas integrações via Open Finance."
         rightSlot={
-          <button type="button" className="btn-connect">
+          <button type="button" className="btn-connect" onClick={() => navigate('/widget')}>
             <span>+</span> Nova Conexão
           </button>
         }
@@ -30,44 +105,55 @@ const OpenFinancePage = () => {
             <span className="card-title">Instituições Conectadas</span>
           </div>
 
-          <div className="bank-list">
-            {bankConnections.map((connection) => (
-              <article
-                key={connection.bankName}
-                className={classNames('bank-card', connection.status === 'error' && 'bank-card-error')}
-              >
-                <div className="bank-header">
-                  <div
-                    className="bank-logo"
-                    style={
-                      connection.accentColor
-                        ? { background: connection.accentColor, color: '#fff' }
-                        : undefined
-                    }
-                  >
-                    {connection.bankInitial}
-                  </div>
-                  <div className="bank-details">
-                    <h3>{connection.bankName}</h3>
-                    <p>{connection.account}</p>
-                  </div>
+          {isLoading ? (
+            <div style={{ padding: '20px', textAlign: 'center' }}>Carregando conexões...</div>
+          ) : (
+            <div className="bank-list">
+              {bankConnections.length === 0 ? (
+                <div style={{ padding: '20px', textAlign: 'center', color: '#6b7280' }}>
+                  Nenhuma conexão encontrada. Clique em "Nova Conexão" para começar.
                 </div>
-                <div className={classNames('connection-status', connection.status)}>
-                  <div className="status-dot" />
-                  <span>{connection.statusLabel}</span>
-                  <button
-                    type="button"
-                    className={classNames(
-                      'btn-inline',
-                      connection.status === 'connected' ? 'danger-text' : 'btn-reconnect',
-                    )}
+              ) : (
+                bankConnections.map((connection) => (
+                  <article
+                    key={connection.id}
+                    className={classNames('bank-card', connection.status === 'LOGIN_ERROR' && 'bank-card-error')}
                   >
-                    {connection.actionLabel}
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
+                    <div className="bank-header">
+                      <div className="bank-logo">
+                        <img
+                          src={connection.institution_image_url}
+                          alt={connection.institution_name}
+                          style={{ width: '48px', height: '48px', borderRadius: '8px', objectFit: 'cover' }}
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none'
+                            e.currentTarget.parentElement!.textContent = connection.institution_name.charAt(0)
+                          }}
+                        />
+                      </div>
+                      <div className="bank-details">
+                        <h3>{connection.institution_name}</h3>
+                        <p>ID: {connection.id}</p>
+                      </div>
+                    </div>
+                    <div className={classNames('connection-status', getStatusClass(connection.status))}>
+                      <div className="status-dot" />
+                      <span>{getStatusLabel(connection.status)}</span>
+                      <button
+                        type="button"
+                        className={classNames(
+                          'btn-inline',
+                          connection.status === 'UPDATED' ? 'danger-text' : 'btn-reconnect',
+                        )}
+                      >
+                        {getActionLabel(connection.status)}
+                      </button>
+                    </div>
+                  </article>
+                ))
+              )}
+            </div>
+          )}
         </section>
 
         <section className="card">
