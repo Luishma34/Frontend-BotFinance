@@ -32,6 +32,20 @@ export interface Transaction {
   user_id: string;
 }
 
+export interface Account {
+  id?: string;
+  account_id: string;
+  owner: string | null;
+  balance: number;
+  type: string;
+  currency_code: string;
+}
+
+export interface AccountResponse extends Account {
+  id: string;
+  open_finance_connection: string;
+}
+
 export interface PagedResponseFull<T> {
   page: number;
   total_pages: number;
