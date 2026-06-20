@@ -1,11 +1,11 @@
 import { httpClient } from './httpClient'
-import type { AuthCredentials, LoginResponse, RegisterResponse } from '../types/auth'
+import type { AuthCredentials, RegisterCredentials, LoginResponse, RegisterResponse } from '../types/auth'
 
 export const authService = {
   login(credentials: AuthCredentials) {
     return httpClient.post<LoginResponse, AuthCredentials>('/auth/login', credentials)
   },
-  register(credentials: AuthCredentials) {
-    return httpClient.post<RegisterResponse, AuthCredentials>('/auth/register', credentials)
+  register(credentials: RegisterCredentials) {
+    return httpClient.post<RegisterResponse, RegisterCredentials>('/auth/register', credentials)
   },
 }

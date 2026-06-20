@@ -10,7 +10,7 @@ interface AuthProviderProps {
   children: ReactNode
 }
 
-const createSession = (token: string, username: string ): AuthSession => ({ token, username })
+const createSession = (token: string, username: string, email: string): AuthSession => ({ token, username, email })
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [session, setSession] = useState<AuthSession | null>(() => authStorage.getSession())
@@ -26,19 +26,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     try {
       const response = await authService.login({ username, password })
-      saveSession(createSession(response.token, username))
+      saveSession(createSession(response.token, response.username, response.email))
     } finally {
       setIsLoading(false)
     }
   }, [saveSession])
 
-  const register = useCallback(async (username: string, password: string) => {
+  const register = useCallback(async (username: string, password: string, email: string) => {
     setIsLoading(true)
 
     try {
-      await authService.register({ username, password })
+      await authService.register({ username, password, email })
       const response = await authService.login({ username, password })
-      saveSession(createSession(response.token, username))
+      saveSession(createSession(response.token, response.username, response.email))
     } finally {
       setIsLoading(false)
     }
@@ -54,6 +54,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       isAuthenticated: Boolean(session?.token),
       isLoading,
       username: session?.username ?? null,
+      email: session?.email ?? null,
       token: session?.token ?? null,
       login,
       register,

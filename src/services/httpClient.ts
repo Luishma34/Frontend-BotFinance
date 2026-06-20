@@ -1,4 +1,4 @@
-type HttpMethod = 'GET' | 'POST'
+type HttpMethod = 'GET' | 'POST' | 'PATCH'
 
 interface RequestOptions<B = unknown> {
   method: HttpMethod
@@ -78,4 +78,6 @@ export const httpClient = {
   get: <T>(path: string, token?: string) => request<T>({ method: 'GET', path, token }),
   post: <T, B = unknown>(path: string, body: B, token?: string) =>
     request<T, B>({ method: 'POST', path, body, token }),
+  patch: <T, B = unknown>(path: string, body: B, token?: string) =>
+    request<T, B>({ method: 'PATCH', path, body, token }),
 }
