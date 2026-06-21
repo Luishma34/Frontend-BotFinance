@@ -21,7 +21,7 @@ const TransactionsPage = () => {
   const [error, setError] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
-  const [hasDescription, setHasDescription] = useState(false)
+  const [hasDescription, setHasDescription] = useState(true)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editingDescription, setEditingDescription] = useState('')
   const [isUpdating, setIsUpdating] = useState(false)

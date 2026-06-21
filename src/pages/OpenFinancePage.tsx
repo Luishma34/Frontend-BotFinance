@@ -4,7 +4,6 @@ import PageHeader from '../components/PageHeader'
 import { useAuth } from '../contexts/useAuth'
 import { useToast } from '../components/Toast'
 import { openFinanceService } from '../services/openFinanceService'
-import { syncLogs } from '../data/mockData'
 import { classNames } from '../lib/classNames'
 import type { OpenFinanceResponse, ConnectionStatus, Account } from '../types/openFinance'
 
@@ -182,7 +181,7 @@ const OpenFinancePage = () => {
       </section>
 
       <div className="dashboard-grid">
-        <section className="card col-span-2">
+        <section className="card col-span-3">
           <div className="card-header">
             <span className="card-title">Instituições Conectadas</span>
           </div>
@@ -334,23 +333,6 @@ const OpenFinancePage = () => {
               )}
             </div>
           )}
-        </section>
-
-        <section className="card">
-          <div className="card-header">
-            <span className="card-title">Log de Sincronização</span>
-          </div>
-          <ul className="sync-log-list">
-            {syncLogs.map((log) => (
-              <li key={`${log.title}-${log.time}`}>
-                <span className={classNames('sync-title', log.tone)}>{log.tone === 'success' ? '✓' : '!'} {log.title}</span>
-                <br />
-                {log.detail}
-                <br />
-                <span className="sync-time">{log.time}</span>
-              </li>
-            ))}
-          </ul>
         </section>
       </div>
     </>

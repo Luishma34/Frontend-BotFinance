@@ -134,7 +134,7 @@ const AssistantPage = () => {
             disabled={messages.length === 0}
             title="Limpar conversa"
           >
-            🗑️ Limpar
+            Limpar
           </button>
         </div>
 
@@ -161,7 +161,7 @@ const AssistantPage = () => {
             disabled={isLoading}
           />
           <button type="submit" className="btn-send" disabled={!normalizedDraft || isLoading}>
-            {isLoading ? '⏳' : '📤'} {isLoading ? 'Enviando...' : 'Enviar'}
+            {isLoading ? 'Enviando...' : 'Enviar'}
           </button>
         </form>
       </section>
