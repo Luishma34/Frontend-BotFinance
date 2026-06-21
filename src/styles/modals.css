@@ -1,0 +1,126 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 32px;
+  max-width: 400px;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  color: var(--text-main);
+}
+
+.modal-content p {
+  margin: 0 0 24px 0;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-modal-cancel,
+.btn-modal-confirm {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.btn-modal-cancel {
+  background: var(--bg-body);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-modal-cancel:hover {
+  background: #e5e7eb;
+}
+
+.btn-modal-confirm {
+  background: var(--danger-color);
+  color: #ffffff;
+}
+
+.btn-modal-confirm:hover {
+  background: #dc2626;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.toast {
+  padding: 16px 20px;
+  border-radius: var(--radius-xs);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.9rem;
+  min-width: 300px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  animation: slideIn 0.3s ease-out;
+}
+
+.toast-success {
+  background-color: var(--secondary-color);
+}
+
+.toast-error {
+  background-color: var(--danger-color);
+}
+
+.toast-warning {
+  background-color: var(--warning-color);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

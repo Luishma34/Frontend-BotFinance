@@ -1,0 +1,62 @@
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .col-span-3 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-links {
+    flex: initial;
+  }
+
+  .sidebar-footer {
+    justify-content: flex-start;
+  }
+
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .col-span-2,
+  .col-span-3 {
+    grid-column: span 1;
+  }
+
+  .report-summary {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bank-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .report-controls {
+    flex-wrap: wrap;
+  }
+
+  .btn-export {
+    margin-left: 0;
+  }
+}

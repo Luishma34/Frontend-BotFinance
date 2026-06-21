@@ -1,0 +1,112 @@
+.card {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.card-with-gap {
+  margin-top: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.text-muted {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.trend {
+  font-size: 0.875rem;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trend.positive {
+  color: var(--secondary-color);
+}
+
+.trend.negative {
+  color: var(--danger-color);
+}
+
+.ai-card {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: #ffffff;
+}
+
+.ai-card .card-title {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.insight-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 16px;
+  border-radius: var(--radius-xs);
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  backdrop-filter: blur(5px);
+}
+
+.insight-icon {
+  font-size: 1.5rem;
+}
+
+.insight-content h4 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.insight-content p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.security-badge {
+  background: #eff6ff;
+  color: var(--primary-dark);
+  padding: 12px;
+  border-radius: var(--radius-xs);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  border: 1px solid #dbeafe;
+}
+
+.security-icon {
+  font-size: 1.2rem;
+}
+
+.danger-text {
+  color: var(--danger-color);
+}
