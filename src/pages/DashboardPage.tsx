@@ -23,6 +23,7 @@ const DashboardPage = () => {
 
       return insightsResponse
     } catch (insightsError) {
+      sessionStorage.setItem('insights', '{"insights": [], "summary": "Ocorreu um erro. Uma nova tentativa será feita em breve."}')
       console.error('Error fetching insights:', insightsError)
     }
   }
