@@ -19,7 +19,7 @@ const DashboardPage = () => {
   async function getInsights() {
     try {
       const insightsResponse = await dashboardService.getInsights(token)
-      localStorage.setItem('insights', JSON.stringify(insightsResponse))
+      sessionStorage.setItem('insights', JSON.stringify(insightsResponse))
 
       return insightsResponse
     } catch (insightsError) {
@@ -119,7 +119,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     const loadInsights = async () => {
-      const insights = localStorage.getItem('insights')
+      const insights = sessionStorage.getItem('insights')
       if (insights) {
         setInsights(JSON.parse(insights))
       } else {
