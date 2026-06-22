@@ -55,12 +55,12 @@ export const connectedAccounts: ConnectedAccount[] = [
 ]
 
 export const cashFlowBars: CashFlowBar[] = [
-  { month: 'Ago', heightPercent: 60, type: 'income' },
-  { month: 'Set', heightPercent: 50, type: 'income' },
-  { month: 'Out', heightPercent: 75, type: 'income' },
-  { month: 'Nov', heightPercent: 80, type: 'expense', muted: true },
-  { month: 'Dez', heightPercent: 90, type: 'income' },
-  { month: 'Jan', heightPercent: 65, type: 'income' },
+  { month: 'Ago', heightPercent: 60, value: 12000, type: 'income' },
+  { month: 'Set', heightPercent: 50, value: 10000, type: 'income' },
+  { month: 'Out', heightPercent: 75, value: 15000, type: 'income' },
+  { month: 'Nov', heightPercent: 80, value: 16000, type: 'expense', muted: true },
+  { month: 'Dez', heightPercent: 90, value: 18000, type: 'income' },
+  { month: 'Jan', heightPercent: 65, value: 13000, type: 'income' },
 ]
 
 export const chatMessages: ChatMessage[] = [

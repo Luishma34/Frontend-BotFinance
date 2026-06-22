@@ -33,6 +33,7 @@ export interface ConnectedAccount {
 export interface CashFlowBar {
   month: string
   heightPercent: number
+  value: number
   type: 'income' | 'expense'
   muted?: boolean
 }

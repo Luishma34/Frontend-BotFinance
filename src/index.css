@@ -292,10 +292,13 @@ select {
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 16px;
+}
+
+.card-header p {
+  font-size: 0.875rem;
+  margin: 3px 0;
+  font-weight: 600;
 }
 
 .card-title {
@@ -360,6 +363,11 @@ select {
   font-size: 1.5rem;
 }
 
+.insights-container {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
 .insight-content h4 {
   font-size: 0.95rem;
   margin-bottom: 4px;
@@ -371,10 +379,56 @@ select {
   line-height: 1.4;
 }
 
+.insight-content h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.insight-type {
+  font-weight: 600;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.775rem;
+}
+
+.insight-type.ECONOMY_OPPORTUNITY {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.insight-type.CASH_FLOW_RISK {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.insight-type.SPENDING_PATTERN {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.insight-type.RECURRING_EXPENSE {
+  background: #8b5cf6;
+  color: #ffffff;
+}
+
+.insight-type.ALERT {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.insight-type.SUGGESTION {
+  background: #06b6d4;
+  color: #ffffff;
+}
+
 .accounts-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow-y: auto;
 }
 
 .account-item {
@@ -415,6 +469,7 @@ select {
 }
 
 .btn-dashed {
+  text-decoration: none;
   width: 100%;
   padding: 8px;
   border: 1px dashed #cccccc;
@@ -422,10 +477,11 @@ select {
   color: #666666;
   border-radius: 6px;
   cursor: pointer;
+  text-align: center;
 }
 
 .chart-container {
-  height: 200px;
+  height: 240px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -443,7 +499,7 @@ select {
 }
 
 .bar {
-  width: 60%;
+  width: 100%;
   border-radius: 4px 4px 0 0;
   position: relative;
   min-height: 4px;
@@ -1054,6 +1110,24 @@ td {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.chart-bars-wrapper {
+  width: 100%;
+  max-width: 92%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 200px;
+  gap: 16px;
+}
+
+.bars-pair {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 100%;
+  width: 90%;
 }
 
 .chat-header {

@@ -62,3 +62,52 @@ export interface CreateItemData {
   consent_expires_at: Date;
   last_updated_at: Date;
 }
+export interface StatisticsResponse {
+  month: string;
+  revenues: number;
+  expenses: number;
+}
+
+export interface BalanceStatisticsResponse {
+  total: number;
+  statistics: StatisticsResponse;
+}
+
+export interface Month {
+  month: string;
+  value: number;
+}
+
+export interface BalanceHistoryResponse {
+  revenue_months: Month[];
+  expense_months: Month[];
+  total: number;
+}
+
+export interface AccountConnectedResponse {
+  account_id: string;
+  balance: number;
+  currency_code: string;
+  id: string;
+  open_finance_connection: string;
+  owner: string;
+  type: string;
+  user_id: string;
+}
+
+export type InsightType = "OPORTUNIDADE_DE_ECONOMIA" | "RISCO_DE_FLUXO_DE_CAIXA" | "PADRAO_DE_GASTOS" | "DESPESA_RECORRENTE" | "ALERTA" | "SUGESTAO"
+
+export interface Insight {
+    type: InsightType
+    title: string
+    description: string
+    severity: "LOW" | "MEDIUM" | "HIGH" | null
+    actionable: boolean
+    icon: string
+}
+
+export interface InsightsResponse {
+    insights: Insight[]
+    summary: string
+}
+
