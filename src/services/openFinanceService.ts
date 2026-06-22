@@ -93,4 +93,7 @@ export const openFinanceService = {
   createItem(token: string, data: CreateItemData) {
     return httpClient.post<unknown, CreateItemData>('/open-finance/item', data, token)
   },
+  unsyncItem(token: string, itemId: string) {
+    return httpClient.delete(`/open-finance/item/unsync/${itemId}`, token)
+  }
 }

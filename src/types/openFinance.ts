@@ -109,5 +109,6 @@ export interface Insight {
 export interface InsightsResponse {
     insights: Insight[]
     summary: string
+    has_transactions: boolean
 }
 

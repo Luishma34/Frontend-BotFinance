@@ -96,34 +96,35 @@
   padding: 4px 8px;
   border-radius: 12px;
   font-size: 0.775rem;
+  margin-left: 8px;
 }
 
-.insight-type.ECONOMY_OPPORTUNITY {
+.insight-type.OPORTUNIDADE_DE_ECONOMIA {
   background: #10b981;
   color: #ffffff;
 }
 
-.insight-type.CASH_FLOW_RISK {
+.insight-type.RISCO_DE_FLUXO_DE_CAIXA {
   background: #f59e0b;
   color: #ffffff;
 }
 
-.insight-type.SPENDING_PATTERN {
+.insight-type.PADRAO_DE_GASTOS {
   background: #3b82f6;
   color: #ffffff;
 }
 
-.insight-type.RECURRING_EXPENSE {
+.insight-type.DESPESA_RECORRENTE {
   background: #8b5cf6;
   color: #ffffff;
 }
 
-.insight-type.ALERT {
+.insight-type.ALERTA {
   background: #ef4444;
   color: #ffffff;
 }
 
-.insight-type.SUGGESTION {
+.insight-type.SUGESTAO {
   background: #06b6d4;
   color: #ffffff;
 }

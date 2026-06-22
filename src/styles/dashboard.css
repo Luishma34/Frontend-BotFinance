@@ -289,3 +289,8 @@
   align-items: flex-start;
 }
 
+.insights-container {
+  max-height: 250px;
+  overflow-y: auto;
+}
+

@@ -16,18 +16,6 @@ const DashboardPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  async function getInsights() {
-    try {
-      const insightsResponse = await dashboardService.getInsights(token)
-      sessionStorage.setItem('insights', JSON.stringify(insightsResponse))
-
-      return insightsResponse
-    } catch (insightsError) {
-      sessionStorage.setItem('insights', '{"insights": [], "summary": "Ocorreu um erro. Uma nova tentativa será feita em breve."}')
-      console.error('Error fetching insights:', insightsError)
-    }
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       if (!token) {
@@ -37,10 +25,11 @@ const DashboardPage = () => {
       }
 
       try {
-        const [statisticsResponse, historyResponse, accountConnectedResponse] = await Promise.all([
+        const [statisticsResponse, historyResponse, accountConnectedResponse, insightsResponse] = await Promise.all([
           dashboardService.getBalanceStatistics(token),
           dashboardService.getBalanceHistory(token),
           dashboardService.getAccountConnected(token),
+          sessionStorage.getItem('insights') ? JSON.parse(sessionStorage.getItem('insights')!) : dashboardService.getInsights(token),
         ])
 
         const cards: KpiCardData[] = [
@@ -107,6 +96,11 @@ const DashboardPage = () => {
 
         setCashFlowBars(bars)    
         setAccountConnected(accountConnectedResponse)
+
+        if (insightsResponse.has_transactions) {
+          sessionStorage.setItem('insights', JSON.stringify(insightsResponse))
+        }
+        setInsights(insightsResponse)
       } catch (err) {
         setError('Failed to fetch dashboard data')
         console.error('Error fetching dashboard data:', err)
@@ -116,19 +110,6 @@ const DashboardPage = () => {
     }
 
     fetchData()
-  }, [token])
-
-  useEffect(() => {
-    const loadInsights = async () => {
-      const insights = sessionStorage.getItem('insights')
-      if (insights) {
-        setInsights(JSON.parse(insights))
-      } else {
-        setInsights(await getInsights())
-      }
-    }
-    
-    loadInsights()
   }, [token])
 
   return (
@@ -175,7 +156,7 @@ const DashboardPage = () => {
                 {insight.icon}
               </span>
               <div className="insight-content">
-                <h4><span>{insight.title}</span><span className={`insight-type ${insight.type}`}>{insight.type.replace('_', ' ')}</span></h4>
+                <h4><span>{insight.title}</span><span className={`insight-type ${insight.type}`}>{insight.type.replaceAll('_', ' ')}</span></h4>
                 <p>{insight.description}</p>
               </div>
             </article>

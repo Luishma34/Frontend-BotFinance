@@ -116,6 +116,19 @@ const OpenFinancePage = () => {
     }
   }
 
+  const unsyncItem = async (token: string, connectionId: string) => {
+    if (!token) return
+
+    try {
+      await openFinanceService.unsyncItem(token, connectionId)
+      sessionStorage.removeItem('insights')
+    } catch (err) {
+      console.error('Error unsyncing item:', err)
+    } finally {
+      window.location.reload()
+    }
+  }
+
   const handleCreateAndSyncAccount = async (connectionId: string, account: Account) => {
     if (!token) return
 
@@ -222,6 +235,11 @@ const OpenFinancePage = () => {
                         <span>{getStatusLabel(connection.status)}</span>
                         <button
                           type="button"
+                          onClick={async () => {
+                            if (connection.status == "UPDATED") {
+                              await unsyncItem(token, connection.id)
+                            }
+                          }}
                           className={classNames(
                             'btn-inline',
                             connection.status === 'UPDATED' ? 'danger-text' : 'btn-reconnect',
