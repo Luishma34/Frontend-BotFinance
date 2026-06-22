@@ -6,7 +6,6 @@ import AuthPage from './pages/AuthPage'
 import DashboardPage from './pages/DashboardPage'
 import FinancePage from './pages/FinancePage'
 import OpenFinancePage from './pages/OpenFinancePage'
-import ReportsPage from './pages/ReportsPage'
 import TransactionsPage from './pages/TransactionsPage'
 import Widget from './pages/Widget'
 
@@ -34,10 +33,6 @@ const router = createBrowserRouter([
       {
         path: 'financeiro',
         element: <FinancePage />,
-      },
-      {
-        path: 'relatorios',
-        element: <ReportsPage />,
       },
       {
         path: 'open-finance',

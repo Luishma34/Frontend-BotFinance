@@ -18,7 +18,6 @@ export const navItems: NavItem[] = [
   { route: 'dashboard', label: 'Visão Geral', icon: '📊', path: '/' },
   { route: 'assistant', label: 'Assistente IA', icon: '🤖', path: '/assistente' },
   { route: 'finance', label: 'Financeiro', icon: '💰', path: '/financeiro' },
-  { route: 'reports', label: 'Relatórios', icon: '📈', path: '/relatorios' },
   { route: 'open-finance', label: 'Open Finance', icon: '🏦', path: '/open-finance' },
   { route: 'transactions', label: 'Transações', icon: '💳', path: '/transacoes' },
 ]
