@@ -65,6 +65,8 @@
   color: #666666;
   border-radius: var(--radius-xs);
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn-inline {

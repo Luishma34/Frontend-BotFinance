@@ -164,7 +164,7 @@ const DashboardPage = () => {
         )}
 
         <section className="card ai-card col-span-2 insights-container">
-          <div className="card-header">
+          <div className="card-header insights-header">
             <span className="card-title">✨ Insights do BotFinance</span>
             <p>{insights?.summary || 'Carregando...'}</p>
           </div>

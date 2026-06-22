@@ -56,12 +56,21 @@
 }
 
 .chart-container {
-  height: 200px;
+  height: 300px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 8px;
   padding-top: 20px;
+}
+
+.chart-bars-wrapper {
+  height: 100%;
+  width: 100%;
+  max-width: 98%;
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
 }
 
 .bar-group {
@@ -70,11 +79,19 @@
   align-items: center;
   flex: 1;
   height: 100%;
-  justify-content: flex-end;
+  width: 100%;
+}
+
+.bars-pair {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .bar {
-  width: 60%;
+  width: 100%;
   border-radius: 4px 4px 0 0;
   position: relative;
   min-height: 4px;
@@ -266,3 +283,9 @@
   font-size: 0.875rem;
   color: var(--text-muted);
 }
+
+.insights-header {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
