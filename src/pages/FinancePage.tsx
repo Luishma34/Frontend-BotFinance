@@ -112,15 +112,6 @@ const FinancePage = () => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
   }
 
-  const getReceivableStatusLabel = (status: string) => {
-    const statusMap: Record<string, { label: string; tone: 'success' | 'pending' | 'warning' }> = {
-      'pending': { label: 'Pendente', tone: 'pending' },
-      'received': { label: 'Recebido', tone: 'success' },
-      'overdue': { label: 'Atrasado', tone: 'warning' },
-    }
-    return statusMap[status] || { label: status, tone: 'pending' }
-  }
-
   if (loading) return <div className="loading">Carregando...</div>
   if (error) return <div className="error">{error}</div>
 

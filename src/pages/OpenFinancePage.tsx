@@ -236,7 +236,7 @@ const OpenFinancePage = () => {
                         <button
                           type="button"
                           onClick={async () => {
-                            if (connection.status == "UPDATED") {
+                            if (connection.status == "UPDATED" && token != null) {
                               await unsyncItem(token, connection.id)
                             }
                           }}

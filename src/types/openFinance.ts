@@ -54,13 +54,13 @@ export interface PagedResponseFull<T> {
 }
 
 export interface CreateItemData {
-  user_id: string;
+  user_id: string | null;
   pluggy_connection_id: string;
   institution_name: string;
   institution_image_url: string;
   status: string;
-  consent_expires_at: Date;
-  last_updated_at: Date;
+  consent_expires_at: Date | null;
+  last_updated_at: Date | null;
 }
 export interface StatisticsResponse {
   month: string;

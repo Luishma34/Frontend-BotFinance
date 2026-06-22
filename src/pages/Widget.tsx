@@ -7,14 +7,6 @@ import { openFinanceService } from '../services/openFinanceService';
 import type { Item } from 'pluggy-js';
 import type { CreateItemData } from '../types/openFinance';
 
-interface ItemFull extends Item {
-    consentExpiresAt: Date;
-}
-
-interface ItemData {
-    item: ItemFull;
-}
-
 const Widget = () => {
     const { token, username } = useAuth();
     const navigate = useNavigate();
@@ -62,22 +54,23 @@ const Widget = () => {
         }
     };
 
-    const onSuccess = async (itemData: ItemData) => {
-        const data: CreateItemData = {
+    const onSuccess = async (data: {item: Item}): Promise<void> => {
+        const itemData = data.item;
+        const createItemData: CreateItemData = {
             user_id: null,
-            pluggy_connection_id: itemData.item.id,
-            institution_name: itemData.item.connector.name,
-            institution_image_url: itemData.item.connector.imageUrl,
-            status: itemData.item.status,
-            consent_expires_at: itemData.item.consentExpiresAt,
-            last_updated_at: itemData.item.lastUpdatedAt,
+            pluggy_connection_id: itemData.id,
+            institution_name: itemData.connector.name,
+            institution_image_url: itemData.connector.imageUrl,
+            status: itemData.status,
+            consent_expires_at: null,
+            last_updated_at: itemData.lastUpdatedAt,
         };
 
-        console.log('Data to send:', data);
+        console.log('Data to send:', createItemData);
         console.log('Yay! Pluggy connect success!', itemData);
 
         try {
-            await createItem(data);
+            await createItem(createItemData);
             addToast('Nova conexão criada com sucesso', 'success');
             navigate('/open-finance');
         } catch (err: any) {
