@@ -1,0 +1,268 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+
+.col-span-3 {
+  grid-column: span 3;
+}
+
+.accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.account-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.account-logo {
+  width: 30px;
+  height: 30px;
+  background: #dddddd;
+  border-radius: 50%;
+}
+
+.account-logo.dark {
+  background: #333333;
+}
+
+.account-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.account-mask {
+  font-size: 0.75rem;
+  color: #666666;
+}
+
+.account-balance {
+  font-weight: 600;
+}
+
+.chart-container {
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 20px;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.bar {
+  width: 60%;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  min-height: 4px;
+}
+
+.bar:hover {
+  opacity: 0.8;
+}
+
+.bar-income {
+  background-color: var(--secondary-color);
+}
+
+.bar-expense {
+  background-color: var(--danger-color);
+}
+
+.bar.muted {
+  opacity: 0.6;
+}
+
+.month-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.report-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.report-summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--bg-subtle);
+  border-radius: var(--radius-xs);
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.summary-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.summary-value.tone-positive {
+  color: var(--secondary-color);
+}
+
+.summary-value.tone-negative {
+  color: var(--danger-color);
+}
+
+.summary-value.tone-primary {
+  color: var(--primary-color);
+}
+
+.expenses-wrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+.expenses-chart {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.expenses-legend {
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.expenses-legend li {
+  margin-bottom: 8px;
+}
+
+.actions-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.bank-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.bank-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.bank-card-error {
+  opacity: 0.7;
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+}
+
+.bank-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #555555;
+  margin-right: 16px;
+}
+
+.bank-details h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.bank-details p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cccccc;
+}
+
+.connection-status.connected .status-dot {
+  background: var(--secondary-color);
+}
+
+.connection-status.error .status-dot {
+  background: var(--danger-color);
+}
+
+.connection-status.updating .status-dot {
+  background: var(--warning-color);
+}
+
+.connection-status.outdated .status-dot {
+  background: #9ca3af;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  margin-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination-info {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}

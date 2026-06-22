@@ -1,0 +1,151 @@
+.btn-logout {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  border-radius: var(--radius-xs);
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.btn-send,
+.btn-primary,
+.btn-connect {
+  background: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-send {
+  padding: 0 24px;
+}
+
+.btn-connect {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-send:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-export {
+  margin-left: auto;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 10px 20px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-export:hover {
+  background-color: var(--bg-subtle);
+}
+
+.btn-dashed {
+  width: 100%;
+  padding: 8px;
+  border: 1px dashed #cccccc;
+  background: none;
+  color: #666666;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+}
+
+.btn-inline {
+  margin-left: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-reconnect {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  border-radius: var(--radius-xs);
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.btn-clear-chat {
+  background: var(--danger-color);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-clear-chat:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.btn-clear-chat:disabled {
+  background: #fca5a5;
+  cursor: not-allowed;
+}
+
+
+.btn-action {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-right: 4px;
+}
+
+.btn-action:hover {
+  background: var(--bg-body);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-action-danger {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: var(--danger-color);
+}
+
+.btn-action-danger:hover {
+  background: rgba(220, 38, 38, 0.2);
+  border-color: var(--danger-color);
+}
+
+.btn-secondary {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 10px 20px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-body);
+  border-color: var(--primary-color);
+}
